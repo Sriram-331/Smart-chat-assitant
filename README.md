@@ -1,43 +1,67 @@
-Smart Chat Assistant 💬
-A multi-session chat application built with Streamlit and the Google Gemini API. It lets you manage multiple conversations, search history, and export your data.
+# Smart Chat Assistant
 
-Key Features:
-Multi-Session History: Keep and switch between different chat conversations.
 
-Search: Easily search old chats by title or message content.
 
-Data Export: Download conversations as Text or JSON files.
+A Streamlit-based chat interface powered by Google’s Gemini models, featuring multi-session chat history, search, export (text/JSON), and basic session management tools.
 
-Chat Management: Start new chats and clear/archive old ones.
 
-Getting Started
-1. Requirements
-You need Python 3.8+.
 
-2. Setup
-Install the required libraries:
+## Features
 
-Bash
 
-pip install streamlit google-genai
-3. API Key
-You must replace the placeholder API key in your app.py file with your actual Gemini API Key.
 
-Python
+*   Streamlit UI with wide-layout chat interface and persistent multi-session history in session_state.
 
-# In app.py: Replace this with your key
-GEMINI_API_KEY = "YOUR_ACTUAL_API_KEY_HERE"
-4. Run the App
-Start the application from your terminal:
+*   Automatic model fallback across Gemini models: gemini-2.0-flash-exp → gemini-1.5-flash → gemini-1.5-pro.
 
-Bash
+*   New Chat creation, session switching, search across titles and messages, and auto-title from first user message.
 
-streamlit run app.py
-Usage
-Chat: Type your message and press Enter.
+*   Export current chat to .txt and all chats to .json directly from the sidebar.
 
-New Chat: Click 💬 New chat in the sidebar.
+*   One-click clear current chat and archive old chats (older than 7 days) with counts.
 
-Switch Chats: Click on any conversation title listed under Chats in the sidebar.
+*   Inline error handling and loading spinners during model calls.
 
-Export Data: Use the Export Options buttons to save your current chat or all chat history.
+
+
+## Important Note on API Keys
+
+
+
+Do not hardcode API keys in source files. Move the API key out of code into environment variables or a secrets manager (e.g., Streamlit secrets, .env) before committing. The current file contains a placeholder constant and should be replaced with a secure configuration.
+
+
+
+## Tech Stack
+
+
+
+*   Python
+
+*   Streamlit for the UI and state.
+
+*   google-generativeai for Gemini model access.
+
+
+
+## Getting Started
+
+
+
+1.  *Clone and install*
+
+    *   Create and activate a virtual environment.
+
+    *   Install dependencies:
+
+        *   streamlit
+
+        *   google-generativeai
+
+
+
+2.  *Configure API key*
+
+    *   Preferred: set an environment variable:
+
+        *   On macOS/Linux:
